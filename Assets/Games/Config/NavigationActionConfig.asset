@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9441e8e9426fac2479dee51a6038e71c, type: 3}
+  m_Name: NavigationActionConfig
+  m_EditorClassIdentifier: 
+  data:
+  - id: Drunk
+    icon: {fileID: 21300000, guid: 217a7e256b18b6c48a118fb0afd3e067, type: 3}
+    description: "The current captain loses their position. The captain\r\nrole moves
+      clockwise to the next player who has the\r\nfewest navigation cards (r\xE9sum\xE9s)
+      in front of them.\r\nPass the captain\u2018s logbook to the new captain."
+    navigationAction:
+      rid: 8167676428286164992
+  - id: Mermaid
+    icon: {fileID: 21300000, guid: de9db9e0bc5088f4a85897f06657a725, type: 3}
+    description: 'The captain chooses another player. That player
+
+      shuffles
+      the last three discarded navigation cards and
+
+      secretly looks at them.
+      They may (and should) talk
+
+      about their findings, but they might be lying.'
+    navigationAction:
+      rid: 8167676428286164993
+  - id: Telescope
+    icon: {fileID: 21300000, guid: ce07309c90f3e534695da47a6013c884, type: 3}
+    description: 'The captain chooses another player. That player looks
+
+      at
+      the top navigation card of the draw pile. They may
+
+      put the card back
+      on the draw pile or discard it into
+
+      the Deep Sea.'
+    navigationAction:
+      rid: 8167676428286164994
+  - id: Armed
+    icon: {fileID: 21300000, guid: 15e71a282cb714045a094086eb1f385f, type: 3}
+    description: The navigator receives 1 gun from the general supply.
+    navigationAction:
+      rid: 8167676428286164995
+  - id: Disarmed
+    icon: {fileID: 21300000, guid: 4e41b4b905776bc4dbc87fb9a6e6ef53, type: 3}
+    description: 'The navigator must discard 1 gun from their personal
+
+      supply'
+    navigationAction:
+      rid: 8167676428286164996
+  - id: Cult Uprising
+    icon: {fileID: 21300000, guid: a88d638268537b74790b77a7f2bf5176, type: 3}
+    description: 'A cult ritual is carried out at the end of the navigation.
+
+      To
+      do this, the captain must reveal a cult ritual card'
+    navigationAction:
+      rid: 8167676428286164997
+  references:
+    version: 2
+    RefIds:
+    - rid: 8167676428286164992
+      type: {class: DrunkNavigationAction, ns: Baruah, asm: Assembly-CSharp}
+      data: 
+    - rid: 8167676428286164993
+      type: {class: MermaidNavigationAction, ns: Baruah, asm: Assembly-CSharp}
+      data: 
+    - rid: 8167676428286164994
+      type: {class: TelescopeNavigationAction, ns: Baruah, asm: Assembly-CSharp}
+      data: 
+    - rid: 8167676428286164995
+      type: {class: ArmedNavigationAction, ns: Baruah, asm: Assembly-CSharp}
+      data: 
+    - rid: 8167676428286164996
+      type: {class: DisarmedNavigationAction, ns: Baruah, asm: Assembly-CSharp}
+      data: 
+    - rid: 8167676428286164997
+      type: {class: CultUprisingNavigationAction, ns: Baruah, asm: Assembly-CSharp}
+      data: 
