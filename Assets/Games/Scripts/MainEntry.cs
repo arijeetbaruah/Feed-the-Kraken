@@ -15,6 +15,7 @@ namespace Baruah
         {
             ServiceManager.Add(new ConfigService(configRegistry));
             ServiceManager.Add(new UserStateService(Path.Combine(Application.persistentDataPath, "UserState")));
+            ServiceManager.Add(new PlayerService());
 
             SceneManager.LoadScene(1);
         }
