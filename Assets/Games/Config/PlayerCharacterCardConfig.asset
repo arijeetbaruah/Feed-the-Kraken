@@ -14,26 +14,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
   - id: Gunslinger
-    description: Add two guns from the general supply to your personal supply.
-    type: '"GunslingerCharacterCard, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null"'
+    description: 'Discard a gun to reveal this card.
+
+      While this card is revealed,
+      you always get one of our used guns back after a successful mutiny.'
+    type:
+      rid: 6744525797472075776
   - id: Kleptomaniac
     description: "Choose a player.\r\nSteal one gun from that player\u2019s supply
-      and add it to yours.\r\n"
-    type: '"KleptomaniacCharacterCard, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null"'
+      and add it to yours."
+    type:
+      rid: 6744525797472075777
   - id: Troublemaker
     description: "Immediately after guns are revealed:\r\nChoose a player.\r\nEach
-      of that player\u2019s guns count as two guns for the current mutiny.\r"
-    type: '"TroublemakerCharacterCard, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null"'
+      of that player\u2019s guns count as two guns for the current mutiny."
+    type:
+      rid: 6744525797472075778
   - id: Gunsmith
     description: 'Discard a gun to reveal this card.
 
       While this card is revealed,
       you always get one of our used guns back after a successful mutiny.'
-    type: '"GunsmithCharacterCard, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null"'
+    type:
+      rid: 6744525797472075779
   - id: Peacemaker
     description: 'Immediately after guns are revealed:
 
@@ -42,5 +45,23 @@ MonoBehaviour:
       That
       player returns their revealed guns to their supply. They do not count towards
       the current mutiny.'
-    type: '"PeacemakerCharacterCard, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null"'
+    type:
+      rid: 6744525797472075780
+  references:
+    version: 2
+    RefIds:
+    - rid: 6744525797472075776
+      type: {class: GunslingerCharacterCard, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 6744525797472075777
+      type: {class: KleptomaniacCharacterCard, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 6744525797472075778
+      type: {class: TroublemakerCharacterCard, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 6744525797472075779
+      type: {class: GunsmithCharacterCard, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 6744525797472075780
+      type: {class: PeacemakerCharacterCard, ns: , asm: Assembly-CSharp}
+      data: 

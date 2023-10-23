@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Baruah;
+using Baruah.Service;
 
 public interface ICharacterCard
 {
@@ -14,7 +13,7 @@ public class GunslingerCharacterCard : ICharacterCard
 
     public void Execute()
     {
-        throw new System.NotImplementedException();
+        ServiceManager.Get<PlayerService>().CurrentPlayer.TotalGuns += 2;
     }
 }
 

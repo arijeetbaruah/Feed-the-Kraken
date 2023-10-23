@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Baruah.StateMachine
 {
-    public class CaptainAppointmentPhase : IState
+    public class InitState : IState
     {
         public void Initialize()
         {

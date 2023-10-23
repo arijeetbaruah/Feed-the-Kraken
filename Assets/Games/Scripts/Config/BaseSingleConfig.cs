@@ -1,6 +1,5 @@
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Baruah.Config
@@ -30,7 +29,7 @@ namespace Baruah.Config
         public virtual void Initialize()
         {
             map = new Dictionary<string, T>();
-            foreach(var item in data)
+            foreach (var item in data)
             {
                 if (!map.TryAdd(item.ID, item))
                 {
