@@ -10,6 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 447957439312376383, guid: 2afaa055cb897424e86248899ceeb60b,
         type: 3}
+      propertyPath: action
+      value: MoveRight
+      objectReference: {fileID: 0}
+    - target: {fileID: 447957439312376383, guid: 2afaa055cb897424e86248899ceeb60b,
+        type: 3}
       propertyPath: directionCard
       value: 1
       objectReference: {fileID: 0}
@@ -147,7 +152,7 @@ PrefabInstance:
     - target: {fileID: 6202781712813683733, guid: 2afaa055cb897424e86248899ceeb60b,
         type: 3}
       propertyPath: m_Name
-      value: WestNavigationCard
+      value: EastNavigationCard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

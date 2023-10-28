@@ -8,7 +8,7 @@ namespace Baruah.StateMachine
     {
         public GameStateMachine()
         {
-            ChangeState(new CaptainAppointmentPhase());
+            ChangeState(new InitState(this));
         }
     }
 }

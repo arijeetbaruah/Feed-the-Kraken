@@ -1,8 +1,11 @@
 using Baruah.Config;
 using Baruah.Service;
+using Newtonsoft.Json;
 using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +23,10 @@ namespace Baruah
         [SerializeField] private NavigationDirection directionCard;
         [SerializeField, ValueDropdown(nameof(GetActions))] private string navigationAction;
         [SerializeField] private Image[] actionIcon;
+
+        [SerializeField, ValueDropdown(nameof(GetActionList))] private string action;
+
+        public IEnumerable<MethodInfo> MoveFunction => typeof(Ship).GetMethods().Where(method => method.GetCustomAttributes<MoveActionAttribute>().Count() > 0);
 
         public void SetCardData(NavigatinCardConfigData configData)
         {
@@ -39,8 +46,12 @@ namespace Baruah
         {
             NavigationCardSelector.Instance.RemoveCards();
             Ship ship = GameObject.FindObjectOfType<Ship>();
-            
-            switch(directionCard)
+
+            var funcs = MoveFunction.ToDictionary(m => m.Name);
+
+            funcs[action].Invoke(ship, null);
+
+            /*switch(directionCard)
             {
                 case NavigationDirection.NORTH:
                     ship.MoveForward();
@@ -51,7 +62,12 @@ namespace Baruah
                 case NavigationDirection.WEST:
                     ship.MoveRight();
                     break;
-            }
+            }*/
+        }
+
+        public IEnumerable<string> GetActionList()
+        {
+            return MoveFunction.Select(method => method.Name);
         }
 
         public static IEnumerable<string> GetActions()

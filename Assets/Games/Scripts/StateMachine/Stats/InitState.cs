@@ -4,17 +4,15 @@ using UnityEngine;
 
 namespace Baruah.StateMachine
 {
-    public class InitState : IState
+    public class InitState : BaseState
     {
-        public void Initialize()
+        public InitState(IStateMachine stateMachine) : base(stateMachine)
         {
-
         }
 
-        public void OnEnter()
+        public override void OnEnter()
         {
             var players = ServiceManager.Get<PlayerService>().GetPlayers().ToList();
-            var captain = players[Random.Range(0, players.Count)];
             Debug.Log("Appointment Phase");
 
             foreach (var player in players)
@@ -22,15 +20,15 @@ namespace Baruah.StateMachine
                 Debug.Log($"{player.ID} is {player.CharacterCard.ID}");
             }
 
-            Debug.Log($"{captain.ID} is captain");
+            stateMachine.ChangeState(new CaptainAppointmentPhase(stateMachine));
         }
 
-        public void OnExit()
+        public override void OnExit()
         {
 
         }
 
-        public void OnUpdate(float deltaTime)
+        public override void OnUpdate(float deltaTime)
         {
 
         }

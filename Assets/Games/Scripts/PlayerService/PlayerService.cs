@@ -4,11 +4,21 @@ using System.Linq;
 
 namespace Baruah
 {
+    public enum Role
+    {
+        NONE,
+        CAPTAIN,
+        VICE_CAPTAIN,
+        NAVIGATOR
+    }
+
     public interface IPlayer
     {
         string ID { get; }
+        string Name { get; }
         ICharacterCard CharacterCard { get; }
 
+        Role Role { get; set; }
         int TotalGuns { get; set; }
     }
 
@@ -16,20 +26,32 @@ namespace Baruah
     {
         public string ID => id;
         public string id;
+        public string Name => name;
+        public string name;
 
         public ICharacterCard CharacterCard { get; private set; }
         public int TotalGuns { get; set; }
 
-        public BasePlayer(ICharacterCard characterCard)
+        public Role Role { get; set; }
+
+        public BasePlayer(string name, ICharacterCard characterCard)
         {
             id = System.Guid.NewGuid().ToString();
+            this.name = name;
             CharacterCard = characterCard;
         }
     }
 
     public class LocalPlayer : BasePlayer
     {
-        public LocalPlayer(ICharacterCard characterCard) : base(characterCard)
+        public LocalPlayer(string name, ICharacterCard characterCard) : base(name, characterCard)
+        {
+        }
+    }
+
+    public class AIPlayer : BasePlayer
+    {
+        public AIPlayer(string name, ICharacterCard characterCard) : base(name, characterCard)
         {
         }
     }
@@ -45,22 +67,25 @@ namespace Baruah
         public PlayerService()
         {
             var characterData1 = PlayerCharacterCardConfig.data[GetRandomCard()];
-            //Type type1 = JsonConvert.DeserializeObject<Type>(characterData1.type);
-            //ICharacterCard characterCard1 = (ICharacterCard)Activator.CreateInstance(characterData1.type);
-            IPlayer player = new LocalPlayer(characterData1.type);
+            IPlayer player = new LocalPlayer("Player 1", characterData1.type);
             playerDatabase.Add(player.ID, player);
 
             var characterData2 = PlayerCharacterCardConfig.data[GetRandomCard()];
-            //Type type2 = JsonConvert.DeserializeObject<Type>(characterData2.type);
-            //ICharacterCard characterCard2 = (ICharacterCard)Activator.CreateInstance(characterData2.type);
-            IPlayer player1 = new LocalPlayer(characterData2.type);
+            IPlayer player1 = new AIPlayer("Player 2", characterData2.type);
             playerDatabase.Add(player1.ID, player1);
 
             var characterData3 = PlayerCharacterCardConfig.data[GetRandomCard()];
-            //Type type3 = JsonConvert.DeserializeObject<Type>(characterData3.type);
-            //ICharacterCard characterCard3 = (ICharacterCard)Activator.CreateInstance(characterData3.type);
-            IPlayer player2 = new LocalPlayer(characterData3.type);
+            IPlayer player2 = new AIPlayer("Player 3", characterData3.type);
             playerDatabase.Add(player2.ID, player2);
+
+            var characterData4 = PlayerCharacterCardConfig.data[GetRandomCard()];
+            IPlayer player3 = new AIPlayer("Player 4", characterData4.type);
+            playerDatabase.Add(player3.ID, player3);
+
+
+            var characterData5 = PlayerCharacterCardConfig.data[GetRandomCard()];
+            IPlayer player4 = new AIPlayer("Player 5", characterData5.type);
+            playerDatabase.Add(player4.ID, player4);
         }
 
         public IEnumerable<IPlayer> GetPlayers()

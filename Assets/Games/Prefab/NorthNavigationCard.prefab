@@ -322,6 +322,7 @@ MonoBehaviour:
   actionIcon:
   - {fileID: 3520934088553310141}
   - {fileID: 2705247672984507416}
+  action: MoveForward
 --- !u!114 &3853534323935250543
 MonoBehaviour:
   m_ObjectHideFlags: 0

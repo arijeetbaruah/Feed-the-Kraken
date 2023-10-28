@@ -2,7 +2,6 @@ namespace Baruah.StateMachine
 {
     public interface IState
     {
-        void Initialize();
         void OnEnter();
         void OnUpdate(float deltaTime);
         void OnExit();
@@ -10,7 +9,13 @@ namespace Baruah.StateMachine
 
     public abstract class BaseState : IState
     {
-        public abstract void Initialize();
+        protected IStateMachine stateMachine;
+
+        public BaseState(IStateMachine stateMachine)
+        {
+            this.stateMachine = stateMachine;
+        }
+
         public abstract void OnEnter();
         public abstract void OnExit();
         public abstract void OnUpdate(float deltaTime);

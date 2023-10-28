@@ -1,9 +1,14 @@
 using DG.Tweening;
 using GridSystem;
+using System;
 using UnityEngine;
 
 namespace Baruah
 {
+    public class MoveActionAttribute : Attribute
+    {
+    }
+
     public class Ship : MonoBehaviour
     {
         [SerializeField] private GridSystem.Grid grid;
@@ -11,6 +16,7 @@ namespace Baruah
 
         private bool moving = false;
 
+        [MoveAction]
         public void MoveLeft()
         {
             moving = true;
@@ -26,6 +32,7 @@ namespace Baruah
             });
         }
 
+        [MoveAction]
         public void MoveForward()
         {
             moving = true;
@@ -41,6 +48,7 @@ namespace Baruah
             });
         }
 
+        [MoveAction]
         public void MoveRight()
         {
             moving = true;

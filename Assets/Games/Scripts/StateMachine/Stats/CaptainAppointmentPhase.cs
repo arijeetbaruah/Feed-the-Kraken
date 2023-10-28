@@ -1,36 +1,36 @@
 using Baruah.Service;
+using DG.Tweening;
 using System.Linq;
 using UnityEngine;
 
 namespace Baruah.StateMachine
 {
-    public class CaptainAppointmentPhase : IState
+    public class CaptainAppointmentPhase : BaseState
     {
-        public void Initialize()
+        public CaptainAppointmentPhase(IStateMachine stateMachine) : base(stateMachine)
         {
-
         }
 
-        public void OnEnter()
+        public override void OnEnter()
         {
             var players = ServiceManager.Get<PlayerService>().GetPlayers().ToList();
             var captain = players[Random.Range(0, players.Count)];
-            Debug.Log("Appointment Phase");
+            captain.Role = Role.CAPTAIN;
 
-            foreach (var player in players)
+            ServiceManager.Get<UIService>().captainAppointementHUD.gameObject.SetActive(true);
+            ServiceManager.Get<UIService>().captainAppointementHUD.ShowCaptain(captain);
+            DOVirtual.DelayedCall(2, () =>
             {
-                Debug.Log($"{player.ID} is {player.CharacterCard.ID}");
-            }
-
-            Debug.Log($"{captain.ID} is captain");
+                ServiceManager.Get<UIService>().captainAppointementHUD.gameObject.SetActive(false);
+                stateMachine.ChangeState(new AppointmentNavigationTeamState(stateMachine));
+            });
         }
 
-        public void OnExit()
+        public override void OnExit()
         {
-
         }
 
-        public void OnUpdate(float deltaTime)
+        public override void OnUpdate(float deltaTime)
         {
 
         }
