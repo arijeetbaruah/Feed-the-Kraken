@@ -1,5 +1,6 @@
 using Baruah.Service;
 using DG.Tweening;
+using System.Linq;
 using UnityEngine;
 
 namespace Baruah.StateMachine
@@ -12,7 +13,8 @@ namespace Baruah.StateMachine
 
         public override void OnEnter()
         {
-            ServiceManager.Get<UIService>().appointmentNavigationTeamHUD.gameObject.SetActive(true);
+            IPlayer player = ServiceManager.Get<PlayerService>().GetPlayers().Where(player => player.Role == Role.CAPTAIN).FirstOrDefault();
+            player.AppointmentNavigationTeam();
             ServiceManager.Get<UIService>().OnNavigatorSelected += OnNavigatorSelected;
         }
 

@@ -10,6 +10,7 @@ namespace Baruah
         [SerializeField] private AppointmentNavigationTeamHUD appointmentNavigationTeamHUD;
         [SerializeField] private CaptainAppointementHUD captainAppointementHUD;
         [SerializeField] private RibbonHUD ribbonHUD;
+        [SerializeField] private MutanyHUD mutanyHUD;
 
         private void Start()
         {
@@ -18,7 +19,13 @@ namespace Baruah
             uIService.appointmentNavigationTeamHUD = appointmentNavigationTeamHUD;
             uIService.captainAppointementHUD = captainAppointementHUD;
             uIService.ribbonHUD = ribbonHUD;
+            uIService.mutanyHUD = mutanyHUD;
             stateMachine = new GameStateMachine();
+        }
+
+        private void Update()
+        {
+            stateMachine?.Update();
         }
     }
 }

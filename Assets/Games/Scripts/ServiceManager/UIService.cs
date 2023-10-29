@@ -7,6 +7,8 @@ namespace Baruah.Service
         public AppointmentNavigationTeamHUD appointmentNavigationTeamHUD;
         public CaptainAppointementHUD captainAppointementHUD;
         public RibbonHUD ribbonHUD;
+        public MutanyHUD mutanyHUD;
+
         public Action OnNavigatorSelected;
     }
 }

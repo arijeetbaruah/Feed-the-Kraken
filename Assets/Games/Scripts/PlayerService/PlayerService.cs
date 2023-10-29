@@ -20,6 +20,7 @@ namespace Baruah
 
         Role Role { get; set; }
         int TotalGuns { get; set; }
+        void AppointmentNavigationTeam();
     }
 
     public abstract class BasePlayer : IPlayer
@@ -39,21 +40,10 @@ namespace Baruah
             id = System.Guid.NewGuid().ToString();
             this.name = name;
             CharacterCard = characterCard;
+            TotalGuns = 5;
         }
-    }
 
-    public class LocalPlayer : BasePlayer
-    {
-        public LocalPlayer(string name, ICharacterCard characterCard) : base(name, characterCard)
-        {
-        }
-    }
-
-    public class AIPlayer : BasePlayer
-    {
-        public AIPlayer(string name, ICharacterCard characterCard) : base(name, characterCard)
-        {
-        }
+        public abstract void AppointmentNavigationTeam();
     }
 
     public class PlayerService : IService

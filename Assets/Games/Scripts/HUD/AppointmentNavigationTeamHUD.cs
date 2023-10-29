@@ -1,5 +1,6 @@
 using Baruah;
 using Baruah.Service;
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,5 +77,25 @@ public class AppointmentNavigationTeamHUD : MonoBehaviour
 
             ServiceManager.Get<UIService>().OnNavigatorSelected.Invoke();
         }
+    }
+
+    public void ShowViceCaptainAndNavigator(IPlayer viceCaptain, IPlayer navigator)
+    {
+        this.viceCaptain = viceCaptain;
+        this.navigator = navigator;
+
+        viceCaptainTxt.gameObject.SetActive(true);
+        navigatorTxt.gameObject.SetActive(true);
+        content.parent.gameObject.SetActive(false);
+
+        viceCaptainTxt.SetText($"{viceCaptain.Name} is Vice Captain");
+        navigatorTxt.SetText($"{navigator.Name} is Navigator");
+
+        DOVirtual.DelayedCall(2, () =>
+        {
+            viceCaptainTxt.gameObject.SetActive(true);
+            navigatorTxt.gameObject.SetActive(true);
+            ServiceManager.Get<UIService>().OnNavigatorSelected.Invoke();
+        });
     }
 }

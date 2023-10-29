@@ -8,8 +8,13 @@ namespace Baruah.StateMachine
 {
     public class MutinyState : BaseState
     {
+        private float timer = 5;
+        private bool startTimer = false;
+        private MutanyHUD mutanyHUD;
+
         public MutinyState(IStateMachine stateMachine) : base(stateMachine)
         {
+            mutanyHUD = ServiceManager.Get<UIService>().mutanyHUD;
         }
 
         public override void OnEnter()
@@ -17,7 +22,12 @@ namespace Baruah.StateMachine
             ServiceManager.Get<UIService>().ribbonHUD.SetText("Mutany Phase");
             DOVirtual.DelayedCall(2, () =>
             {
-                ServiceManager.Get<UIService>().ribbonHUD.gameObject.SetActive(false);
+                UIService UIservice = ServiceManager.Get<UIService>();
+                UIservice.ribbonHUD.gameObject.SetActive(false);
+                UIservice.mutanyHUD.gameObject.SetActive(true);
+                timer = 10;
+                startTimer = true;
+                //UIservice.mutanyHUD.
             });
         }
 
@@ -27,6 +37,11 @@ namespace Baruah.StateMachine
 
         public override void OnUpdate(float deltaTime)
         {
+            if (startTimer && timer > 0)
+            {
+                timer -= deltaTime;
+                mutanyHUD.SetTimerTxt(Mathf.RoundToInt(timer));
+            }
         }
     }
 }
