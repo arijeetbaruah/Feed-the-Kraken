@@ -21,6 +21,7 @@ namespace Baruah
         Role Role { get; set; }
         int TotalGuns { get; set; }
         void AppointmentNavigationTeam();
+        void ShowMutany();
     }
 
     public abstract class BasePlayer : IPlayer
@@ -44,6 +45,7 @@ namespace Baruah
         }
 
         public abstract void AppointmentNavigationTeam();
+        public abstract void ShowMutany();
     }
 
     public class PlayerService : IService
@@ -98,6 +100,14 @@ namespace Baruah
             }
 
             return index;
+        }
+
+        public void RegisterEvents()
+        {
+        }
+
+        public void UnRegisterEvents()
+        {
         }
     }
 }

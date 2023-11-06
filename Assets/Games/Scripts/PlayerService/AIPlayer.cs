@@ -1,9 +1,5 @@
 using Baruah.Service;
-using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace Baruah
 {
@@ -29,6 +25,12 @@ namespace Baruah
 
             ServiceManager.Get<UIService>().appointmentNavigationTeamHUD.gameObject.SetActive(true);
             ServiceManager.Get<UIService>().appointmentNavigationTeamHUD.ShowViceCaptainAndNavigator(viceCaptain, navigator);
+        }
+
+        public override void ShowMutany()
+        {
+            ServiceManager.Get<UIService>().mutanyHUD.gameObject.SetActive(true);
+            //ServiceManager.Get<UIService>().mutanyHUD
         }
     }
 }

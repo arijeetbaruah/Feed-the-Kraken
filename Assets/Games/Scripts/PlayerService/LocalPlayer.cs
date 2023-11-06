@@ -1,7 +1,4 @@
 using Baruah.Service;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace Baruah
 {
@@ -14,6 +11,11 @@ namespace Baruah
         public override void AppointmentNavigationTeam()
         {
             ServiceManager.Get<UIService>().appointmentNavigationTeamHUD.gameObject.SetActive(true);
+        }
+
+        public override void ShowMutany()
+        {
+            
         }
     }
 }

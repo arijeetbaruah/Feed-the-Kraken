@@ -10,5 +10,13 @@ namespace Baruah.Service
         public MutanyHUD mutanyHUD;
 
         public Action OnNavigatorSelected;
+
+        public void RegisterEvents()
+        {
+        }
+
+        public void UnRegisterEvents()
+        {
+        }
     }
 }

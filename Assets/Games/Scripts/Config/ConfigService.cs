@@ -17,5 +17,13 @@ namespace Baruah.Service
         {
             return configRegistry.TryGet<T>();
         }
+
+        public void RegisterEvents()
+        {
+        }
+
+        public void UnRegisterEvents()
+        {
+        }
     }
 }
