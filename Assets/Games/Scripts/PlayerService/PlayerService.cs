@@ -58,9 +58,7 @@ namespace Baruah
 
         public PlayerService()
         {
-            var characterData1 = PlayerCharacterCardConfig.data[GetRandomCard()];
-            IPlayer player = new LocalPlayer("Player 1", characterData1.type);
-            playerDatabase.Add(player.ID, player);
+            CreateLocalPlayer();
 
             var characterData2 = PlayerCharacterCardConfig.data[GetRandomCard()];
             IPlayer player1 = new AIPlayer("Player 2", characterData2.type);
@@ -78,6 +76,15 @@ namespace Baruah
             var characterData5 = PlayerCharacterCardConfig.data[GetRandomCard()];
             IPlayer player4 = new AIPlayer("Player 5", characterData5.type);
             playerDatabase.Add(player4.ID, player4);
+        }
+
+        public async void CreateLocalPlayer()
+        {
+            string playerName = await ServiceManager.Get<AuthSystem>().GetPlayerName();
+
+            var characterData1 = PlayerCharacterCardConfig.data[GetRandomCard()];
+            IPlayer player = new LocalPlayer(playerName, characterData1.type);
+            playerDatabase.Add(player.ID, player);
         }
 
         public IEnumerable<IPlayer> GetPlayers()

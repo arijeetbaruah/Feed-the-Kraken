@@ -20,6 +20,8 @@ namespace Baruah
             uIService.captainAppointementHUD = captainAppointementHUD;
             uIService.ribbonHUD = ribbonHUD;
             uIService.mutanyHUD = mutanyHUD;
+            ServiceManager.Add(new PlayerService());
+
             stateMachine = new GameStateMachine();
         }
 

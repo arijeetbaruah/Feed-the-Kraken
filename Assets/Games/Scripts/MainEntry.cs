@@ -12,7 +12,6 @@ namespace Baruah
         void Start()
         {
             ServiceManager.Add(new ConfigService(configRegistry));
-            ServiceManager.Add(new PlayerService());
             
             SceneManager.LoadScene(1);
         }
